@@ -10,7 +10,7 @@ const graphs = {
     easeOutQuint: t => 1 + (--t) * t ** 4
 }
 
-function drawGraph(graph, from = 0, to = 1, step = 0.1) {
+function drawGraph(graph, from = 0, to = 1, step = 0.01) {
     const xmlns = "http://www.w3.org/2000/svg"
     const svg = document.createElementNS(xmlns, 'svg');
     const data = [];
@@ -44,12 +44,12 @@ function drawGraph(graph, from = 0, to = 1, step = 0.1) {
     xAxis.setAttribute('y2', height);
     const xGroup = document.createElementNS(xmlns, 'g');
     xGroup.setAttribute('transform', `translate(0, ${height + 20})`)
-    data.forEach(el => {
+    for (let i = from; i < to; i += to / 10) {
         const xText = document.createElementNS(xmlns, 'text');
-        xText.innerHTML = el.x.toFixed(2);
-        xText.setAttribute('x', x(el.x))
+        xText.innerHTML = i.toFixed(2);
+        xText.setAttribute('x', x(i))
         xGroup.append(xText);
-    })
+    }
 
     // Y axis
     const yAxis = document.createElementNS(xmlns, 'line');
@@ -59,12 +59,12 @@ function drawGraph(graph, from = 0, to = 1, step = 0.1) {
     yAxis.setAttribute('y2', 0);
     const yGroup = document.createElementNS(xmlns, 'g');
     yGroup.setAttribute('transform', `translate(-40, 0)`)
-    data.forEach(el => {
+    for (let i = from; i < to; i += to / 6) {
         const yText = document.createElementNS(xmlns, 'text');
-        yText.innerHTML = el.y.toFixed(2);
-        yText.setAttribute('y', y(el.y))
+        yText.innerHTML = i.toFixed(2);
+        yText.setAttribute('y', y(i))
         yGroup.append(yText);
-    })
+    }
 
     // Adding elements
     svg.append(xAxis);

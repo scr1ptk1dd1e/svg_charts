@@ -1,0 +1,26 @@
+svg {
+    overflow: visible;
+    margin: 3em;
+}
+
+line {
+    fill: none;
+    stroke: black;
+    stroke-width: 2px;
+}
+
+.x text {
+    text-anchor: middle;
+}
+
+.y text {
+    text-anchor: end;
+    dominant-baseline: middle;
+}
+
+polyline {
+    transition: stroke-dashoffset linear .5s;
+    stroke-width: 3px;
+    stroke: red;
+    fill: none;
+}

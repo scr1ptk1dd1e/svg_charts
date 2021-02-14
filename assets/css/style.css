@@ -56,7 +56,6 @@ line {
 }
 
 polyline {
-    transition: stroke-dashoffset linear .5s;
     stroke-width: 3px;
     stroke: white;
     fill: none;

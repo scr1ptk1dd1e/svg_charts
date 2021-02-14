@@ -100,7 +100,11 @@ function drawGraph(graph, from = 0, to = 1, step = 0.01, graphBlock = null) {
     inputForm.addEventListener("submit", (e) => {
         e.preventDefault();
         let target = e.target;
-        drawGraph(graph, Number(target.from.value), Number(target.to.value), Number(target.step.value), graphBlock);
+        const polyline = graphBlock.querySelector('polyline')
+        polyline.style.strokeDashoffset = polyline.getTotalLength();
+        polyline.addEventListener("transitionend", () => {
+            drawGraph(graph, Number(target.from.value), Number(target.to.value), Number(target.step.value), graphBlock);
+        })
     })
 
     // Adding elements
@@ -116,7 +120,12 @@ function drawGraph(graph, from = 0, to = 1, step = 0.01, graphBlock = null) {
 
     // Add graph line styles for animation
     graphLine.style.strokeDasharray = graphLine.getTotalLength();
-    graphLine.style.strokeDashoffset = 0;
+    graphLine.style.strokeDashoffset = graphLine.getTotalLength();
+
+    setTimeout(() => {
+        graphLine.style.transition = 'stroke-dashoffset linear .5s'
+        graphLine.style.strokeDashoffset = 0;
+    }, 400)
 }
 
 window.onload = () => {

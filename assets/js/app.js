@@ -128,11 +128,13 @@ function drawGraph(graph, from = 0, to = 1, step = 0.01, graphBlock = null) {
     }, 400)
 }
 
+
 window.onload = () => {
-    drawGraph(graphs.linear)
-    drawGraph(graphs.easeInQuart)
-    drawGraph(graphs.easeOutQuart)
-    drawGraph(graphs.easeInQuint)
-    drawGraph(graphs.easeOutQuint)
-    drawGraph(graphs.easeInOutQuart)
+
+    drawGraph(graphs.linear);
+    drawGraph(graphs.easeInQuart);
+    drawGraph(graphs.easeOutQuart);
+    drawGraph(graphs.easeInQuint);
+    drawGraph(graphs.easeOutQuint);
+    drawGraph(graphs.easeInOutQuart);
 }
